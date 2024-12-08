@@ -40,6 +40,15 @@ class Particle {
     }
   }
 
+  startOrbit(target) {
+    this.isOrbiting = true;
+    let dir = p5.Vector.sub(this.pos, target);
+    let tangent = dir.copy().rotate(HALF_PI);
+    tangent.setMag(sqrt(10 / dir.mag()));
+    this.vel = tangent;
+  }
+  
+
   update() {
     this.vel.add(this.acc);
     this.pos.add(this.vel);
