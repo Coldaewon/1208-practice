@@ -7,6 +7,10 @@ function draw() {
   background(220);
 }
 
+function mousePressed() {
+  particles.push(new Particle(mouseX, mouseY));
+}
+
 class Particle {
   constructor(x, y) {
     this.pos = createVector(x, y);
@@ -33,8 +37,6 @@ class Particle {
       let strength = 100 / (distance * distance);
       dir.setMag(strength);
       this.applyForce(dir);
-    } else if (!this.isOrbiting && distance >= 50) {
-      this.startOrbit(target);
     }
   }
 
