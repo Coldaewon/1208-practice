@@ -26,6 +26,18 @@ class Particle {
     this.applyForce(dir);
   }
 
+  applyRepulsion(target) {
+    let dir = p5.Vector.sub(this.pos, target);
+    let distance = dir.mag();
+    if (distance < 50) {
+      let strength = 100 / (distance * distance);
+      dir.setMag(strength);
+      this.applyForce(dir);
+    } else if (!this.isOrbiting && distance >= 50) {
+      this.startOrbit(target);
+    }
+  }
+
   update() {
     this.vel.add(this.acc);
     this.pos.add(this.vel);
