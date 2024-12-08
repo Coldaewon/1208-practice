@@ -18,6 +18,14 @@ class Particle {
     this.acc.add(force);
   }
 
+  applyGravity(target) {
+    let dir = p5.Vector.sub(target, this.pos);
+    let distance = constrain(dir.mag(), 10, 200);
+    let strength = 10 / (distance * distance);
+    dir.setMag(strength);
+    this.applyForce(dir);
+  }
+
   update() {
     this.vel.add(this.acc);
     this.pos.add(this.vel);
