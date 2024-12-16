@@ -12,7 +12,7 @@ class Particle {
 
   applyGravity(target) {
     let dir = p5.Vector.sub(target, this.pos);
-    let distance = constrain(dir.mag(), 10, 200);
+    let distance = constrain(dir.mag(), radius + 10, radius + 200);
     let strength = 10 / (distance * distance);
     dir.setMag(strength);
     this.applyForce(dir);
@@ -21,11 +21,11 @@ class Particle {
   applyRepulsion(target) {
     let dir = p5.Vector.sub(this.pos, target);
     let distance = dir.mag();
-    if (distance < 50) {
+    if (distance < radius + 30) {
       let strength = 100 / (distance * distance);
       dir.setMag(strength);
       this.applyForce(dir);
-    } else if (!this.isOrbiting && distance >= 50) {
+    } else if (!this.isOrbiting && distance >= radius + 30) {
       this.startOrbit(target);
     }
   }
