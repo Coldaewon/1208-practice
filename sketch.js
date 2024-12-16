@@ -2,7 +2,7 @@ let particleSystem;
 
 function setup() {
   createCanvas(600, 600);
-  particleSystem = new ParticleSystem(width / 2, height / 2); 
+  particleSystem = new ParticleSystem(width / 2, height / 2, 50); 
 }
 
 function draw() {
@@ -13,8 +13,3 @@ function draw() {
 function mousePressed() {
   particleSystem.addParticle(mouseX, mouseY);
 }
-
-
-
-
- 

@@ -10,7 +10,7 @@ class Particle {
     this.acc.add(force);
   }
 
-  applyGravity(target) {
+  applyGravity(target, radius) {
     let dir = p5.Vector.sub(target, this.pos);
     let distance = constrain(dir.mag(), radius + 10, radius + 200);
     let strength = 10 / (distance * distance);
@@ -18,7 +18,7 @@ class Particle {
     this.applyForce(dir);
   }
 
-  applyRepulsion(target) {
+  applyRepulsion(target,radius) {
     let dir = p5.Vector.sub(this.pos, target);
     let distance = dir.mag();
     if (distance < radius + 30) {
