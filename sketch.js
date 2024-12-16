@@ -1,53 +1,20 @@
-let particles = [];
-let center;
+let particleSystem;
 
 function setup() {
   createCanvas(600, 600);
-  center = createVector(width / 2, height / 2);
+  particleSystem = new ParticleSystem(width / 2, height / 2); // 중심원 생성
 }
 
 function draw() {
   background(0);
-
-  fill(255, 204, 0);
-  noStroke();
-  ellipse(center.x, center.y, 20);
-
-  
-  for (let p of particles) {
-    p.applyGravity(center); 
-    p.applyRepulsion(center);
-    p.update();
-    p.display();
-  }
+  particleSystem.run(); // 중심원 및 파티클 관리
 }
-
 
 function mousePressed() {
-  particles.push(new Particle(mouseX, mouseY));
+  particleSystem.addParticle(mouseX, mouseY); // 클릭 시 파티클 추가
 }
 
-class ParticleSystem{
-  constructor(x,y){
-    this.center = createVector(x, y);
-    this.particles[];
 
-  }
 
-  addParticle(x, y){
-  this.particles.push(new Particle(x, y));
-  }
 
-  run(){
-  fill(255, 204, 0);
-  noStroke();
-  ellipse(this.center.x, this.center.y, 20);
-  }
-
-  for(let p of this.particles){
-    p.applyGravity(this.center);
-    p.applyRepulsion(this.center);
-    p.update();
-    p.display();
-  }
-}
+ 
