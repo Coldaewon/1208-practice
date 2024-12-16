@@ -11,5 +11,7 @@ function draw() {
 }
 
 function mousePressed() {
-  particleSystem.addParticle(mouseX, mouseY);
+  for(let i = 0; i < 10; i++){
+    particleSystem.addParticle(mouseX, mouseY);
+  }
 }
